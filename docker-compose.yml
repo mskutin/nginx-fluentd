@@ -1,9 +1,26 @@
 version: '3.7'
 
 services:
+  fluentd:
+      build:
+        context: fluentd
+        dockerfile: Dockerfile
+      ports:
+      - 24224:24224
+      - 24224:24224/udp
   nginx:
     build: 
       context: nginx
       dockerfile: Dockerfile
     ports: 
       - 10080:80
+    logging:
+      driver: fluentd-async
+      options:
+        fluentd-async-connect: 'true'
+        fluentd-retry-wait: '1s'
+        fluentd-max-retries: '30'
+        mode: 'non-blocking'
+        tag: 'docker.nginx'
+    depends_on: 
+      - fluentd
