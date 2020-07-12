@@ -1,0 +1,3 @@
+name: nginx-fluentd-infra
+runtime: nodejs
+description: IaC for nginx-fluentd-demo
