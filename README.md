@@ -323,5 +323,5 @@ logs/2020/07/12/cluster-log-2:2020-07-12T06:43:46+00:00	kubernetes.var.log.conta
 
 - [x]  Avoid running multiple services in single container
 - [x]  You can use any 3rd party Docker image (you might have to explain your choice)
-- [ ]  Bonus: use an IAC tool of your choice to create cloud resources you may need (e.g. S3 buckets)
+- [x]  Bonus: use an IAC tool of your choice to create cloud resources you may need (e.g. S3 buckets)
   - `awscli` is used to create s3 bucket, while IaC tool is an overkill for such trivial thing pulumi project has been created for the sake of this task anyway.
