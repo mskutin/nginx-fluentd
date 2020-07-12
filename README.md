@@ -157,7 +157,13 @@ Since we are going to use S3 as a storage, we need to create or use an existing 
 
 Create S3 bucket:
 
- ```bash
+*Option 1* - Pulumi
+
+IaC project, along with corresponding [instructions](infra/README.md) is available in `infra` directory.
+
+*Option 2* - AWS CLI
+
+```bash
 export S3_BUCKET_NAME=nginx-fluentd-logs-asia
 export S3_AWS_REGION=ap-southeast-1
 aws s3api create-bucket \
@@ -318,4 +324,4 @@ logs/2020/07/12/cluster-log-2:2020-07-12T06:43:46+00:00	kubernetes.var.log.conta
 - [x]  Avoid running multiple services in single container
 - [x]  You can use any 3rd party Docker image (you might have to explain your choice)
 - [ ]  Bonus: use an IAC tool of your choice to create cloud resources you may need (e.g. S3 buckets)
-  - `awscli` is used to create s3 bucket, IaC tool is an overkill for such simple task
+  - `awscli` is used to create s3 bucket, while IaC tool is an overkill for such trivial thing pulumi project has been created for the sake of this task anyway.
