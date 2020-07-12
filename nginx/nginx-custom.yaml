@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    service: nginx
+  name: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: nginx
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        service: nginx
+    spec:
+      containers:
+      - image: nginx-fluentd_nginx:latest
+        imagePullPolicy: Never
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    service: nginx
+spec:
+  type: NodePort
+  ports:
+  - port: 10080
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    service: nginx
